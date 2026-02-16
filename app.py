@@ -177,10 +177,11 @@ html, body { background: #0e1117 !important; }
 # ====================
 # Paths
 # ====================
-BASE_DIR = Path(r"C:\Users\andgarcia.000\Downloads")
-MODEL_PATH = BASE_DIR / "final_pipeline_naive_bayes.pkl"
-META_PATH = BASE_DIR / "final_pipeline_naive_bayes_metadata.pkl"
-PRICES_PATH = BASE_DIR / "eth_prices_binance_1h.pkl"
+BASE_DIR = Path(__file__).resolve().parent
+
+MODEL_PATH  = BASE_DIR / "models" / "final_pipeline_naive_bayes.pkl"
+META_PATH   = BASE_DIR / "models" / "final_pipeline_naive_bayes_metadata.pkl"
+PRICES_PATH = BASE_DIR / "data" / "eth_prices_binance_1h.pkl"
 
 
 # ====================
@@ -557,6 +558,7 @@ with st.expander("Grafico (Plotly)", expanded=(section == "Grafico")):
         st.warning("No hay suficientes puntos para graficar.")
     else:
         st.plotly_chart(plotly_price_line(df_out), use_container_width=True)
+
 
 
 
